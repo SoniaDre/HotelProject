@@ -1,0 +1,71 @@
+﻿@model HotelSo.DTO.IndexDTO
+@{
+    ViewData["Title"] = "Manage";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+
+}
+
+<h2>@ViewData["Title"].</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Password:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                <a asp-action="ChangePassword">Change your password</a>
+            }
+            else
+            {
+                <a asp-action="SetPassword">Create</a>
+            }
+            ]
+        </dd>
+       @*  <dt>External Logins:</dt>
+        <dd>
+            @Model.Logins.Count [
+            <a asp-action="ManageLogins">Manage</a> ]
+        </dd> *@
+        @* Phone Numbers can be used as a second factor of verification in a two-factor authentication system.
+        See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+        for details on setting up this ASP.NET application to support two-factor authentication using SMS.
+        Uncomment the following block after you have set up two-factor authentication *@
+        @*<dt>Phone Number:</dt>
+        <dd>
+        @(Model.PhoneNumber ?? "None")
+        @if (Model.PhoneNumber != null)
+        {
+        <br />
+        <a asp-action="AddPhoneNumber">Change</a>
+        <form asp-action="RemovePhoneNumber" method="post" class="form-inline" role="form">
+        <button type="submit" class="btn btn-link">Remove</button>
+        </form>
+        }
+        else
+        {
+        <a asp-action="AddPhoneNumber">Add</a>
+        }
+        </dd>*@
+        @*<dt>Two-Factor Authentication:</dt>
+        <dd>
+        @if (Model.TwoFactor)
+        {
+        <form asp-action="DisableTwoFactorAuthentication" method="post" class="form-inline" role="form">
+        Enabled
+        <button type="submit" class="btn btn-link">Disable</button>
+        </form>
+        }
+        else
+        {
+        <form asp-action="EnableTwoFactorAuthentication" method="post" class="form-inline" role="form">
+        Disabled
+        <button type="submit" class="btn btn-link">Enable</button>
+        </form>
+        }
+        </dd>*@
+    </dl>
+</div>

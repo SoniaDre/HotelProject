@@ -1,0 +1,69 @@
+﻿@model HotelSo.Models.Reservation
+
+@{
+    ViewData["Title"] = "Check out";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="text-center">
+    <div class="col-md-4 mx-auto">
+        <h4>Reservation</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ApplicationUser.Firstname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ApplicationUser.Firstname)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ApplicationUser.Lastname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ApplicationUser.Lastname)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Room.RoomType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Room.EnumStringRoomType)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ArrivalDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ArrivalDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DepartureDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DepartureDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TotalCost)
+            </dd>
+        </dl>
+        <div class="text-center">
+            <div class="col-md-7 mx-auto">
+                <a asp-action="Checkout" asp-controller="Reservations" class="btn btn-block btn-outline-dark tx-tfm" style="margin: 5px">Checkout</a>
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="col-md-7 mx-auto">
+                <a asp-action="Create" asp-controller="Reservations" asp-route-id="@Model.RoomId" class="btn btn-block btn-outline-dark tx-tfm" style="margin: 5px">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

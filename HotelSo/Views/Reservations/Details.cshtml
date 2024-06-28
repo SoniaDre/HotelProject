@@ -1,0 +1,64 @@
+﻿@model HotelSo.Models.Reservation
+
+@{
+    ViewData["Title"] = "Reservation Details";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="text-center">
+    <div class="col-md-4 mx-auto">
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ApplicationUser.Firstname)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ApplicationUser.Firstname)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ApplicationUser.Lastname)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ApplicationUser.Lastname)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.RoomId)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.RoomId)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.TotalCost)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ArrivalDate)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ArrivalDate)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.DepartureDate)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.DepartureDate)
+            </dd>
+        </dl>
+    </div>
+    <div class="text-center ">
+        <div class="col-md-4 mx-auto">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-block btn-outline-dark tx-tfm" style="margin: 5px">Edit</a>
+        </div>
+    </div>
+    <div class="text-center ">
+        <div class="col-md-4 mx-auto">
+            <a asp-action="Index" asp-controller="Reservations" class="btn btn-block btn-outline-dark tx-tfm" style="margin: 5px">Back to List</a>
+        </div>
+    </div>
+</div>

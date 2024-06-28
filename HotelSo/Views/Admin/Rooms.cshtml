@@ -1,0 +1,58 @@
+﻿@model HotelSo.DTO.SearchDTO
+
+@{
+    ViewData["Title"] = "Rooms";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<p>
+    <a asp-action="Create" asp-controller="Rooms" class="btn btn-primary">Create New Room</a>
+</p>
+<div class="row">
+    <partial name="_GetAllFreeRoomsPartial" />
+    <div class="col-md-10 mx-auto">
+        <div class="myform form ">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Room.Amenities.AmenitiesPackage)</th>
+                        <th>@Html.DisplayNameFor(model => model.Room.Price)</th>
+                        <th>@Html.DisplayNameFor(model => model.Room.Bed)</th>
+                        <th>@Html.DisplayNameFor(model => model.Room.Size)</th>
+                        <th>@Html.DisplayNameFor(model => model.Room.View)</th>
+                        <th>@Html.DisplayNameFor(model => model.Room.MaxPersons)</th>
+                        <th>@Html.DisplayNameFor(model => model.Room.RoomType)</th>
+                        <th>@Html.DisplayNameFor(model => model.Room.Floor)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Rooms)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Amenities.AmenitiesPackage)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EnumStringBed)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Size)</td>
+                            <td>@Html.DisplayFor(modelItem => item.View)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EnumStringMaxPesrons)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EnumStringRoomType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EnumStringFloor)</td>
+                            <td>
+                                <a asp-action="Edit" asp-controller="Rooms" asp-route-id="@item.Id" class="btn btn-default">Edit</a>
+                                <a asp-action="Details" asp-controller="Rooms" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                                <a asp-action="Delete" asp-controller="Rooms" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Content/js/jquery.validate.min.js"></script>
+ @*    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script> *@
+}

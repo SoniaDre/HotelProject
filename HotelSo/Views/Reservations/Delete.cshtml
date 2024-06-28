@@ -1,0 +1,72 @@
+﻿@model HotelSo.Models.Reservation
+@{
+    ViewData["Title"] = "Delete Reservation";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="text-center">
+    <div class="col-md-4 mx-auto">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ApplicationUser.Firstname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ApplicationUser.Firstname)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ApplicationUser.Lastname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ApplicationUser.Lastname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RoomId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RoomId)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TotalCost)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ArrivalDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ArrivalDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DepartureDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DepartureDate)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete" asp-controller="Reservations" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="text-center">
+                <div class="col-md-4 mx-auto">
+                    <button type="submit" class="btn btn-block btn-outline-dark tx-tfm" style="margin: 5px">Delete</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="text-center">
+            <div class="col-md-4 mx-auto">
+                <a asp-action="Index" asp-controller="Reservations" class="btn btn-block btn-outline-dark tx-tfm" style="margin: 5px">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

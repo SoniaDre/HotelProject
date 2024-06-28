@@ -1,0 +1,61 @@
+﻿@model HotelSo.DTO.SearchDTO
+@{
+    ViewBag.Title = "Rooms";
+    //Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row">
+                    @foreach (var item in Model.Rooms)
+                    {
+                        <div class="col-sm col-md-6 col-lg-4 ftco-animate">
+                            <div class="room">
+                                <a asp-action="SingleRoom" asp-controller="Rooms" asp-route-id="@item.Id" class="img d-flex justify-content-center align-items-center" style="background-image:url(@item.ProfilePicture);">
+                                    <div class="icon d-flex justify-content-center align-items-center">
+                                        <span class="icon-search2"></span>
+                                    </div>
+                                </a>
+                                <div class="text p-3 text-center">
+                                    <h3 class="mb-3">
+                                        <a asp-action="SingleRoom" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.EnumStringRoomType)</a>
+                                    </h3>
+                                    <p><span class="price mr-2">@Html.DisplayFor(modelItem => item.Price)</span> <span class="per">per night</span></p>
+                                    <ul class="list">
+                                        <li><span>@Html.DisplayNameFor(model => model.Rooms.First().Size):</span> @Html.DisplayFor(modelItem => item.Size) m2</li>
+                                        <li><span> @Html.DisplayNameFor(model => model.Rooms.First().View):</span>@Html.DisplayFor(modelItem => item.View)</li>
+                                        <li><span> @Html.DisplayNameFor(model => model.Rooms.First().Bed):</span> @Html.DisplayFor(modelItem => item.EnumStringBed)</li>
+                                        <li><span> @Html.DisplayNameFor(model => model.Rooms.First().MaxPersons):</span> @Html.DisplayFor(modelItem => item.EnumStringMaxPesrons)</li>
+                                        @if (User.IsInRole("Administrator"))
+                                        {
+                                            <li>
+                                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                                                <a asp-action="Create">Create</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                    <hr>
+                                    <p class="pt-1">
+                                        <a asp-action="Create" asp-controller="Reservations" asp-route-id="@item.Id" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-3 sidebar">
+                <div class="sidebar-wrap bg-light ftco-animate">
+                    <h3 class="heading mb-4">Advanced Search</h3>
+                    <partial name="_AdvancedSearchPartial" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

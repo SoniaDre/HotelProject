@@ -1,0 +1,63 @@
+﻿@model IEnumerable<HotelSo.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Reservations History";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <a asp-action="Reservations" asp-controller="Admin" class="btn btn-primary">Reservations</a>
+        <div class="myform form ">
+            <table class="table-hover table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ApplicationUser.FullName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().RoomId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ArrivalDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().DepartureDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().TotalCost)
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ApplicationUser.FullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RoomId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ArrivalDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DepartureDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalCost)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-default">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

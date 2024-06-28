@@ -1,0 +1,218 @@
+﻿@model HotelSo.Models.AmenitiesPerRoom
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <div class="col-md-4 mx-auto">
+
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AmenitiesPackage)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AmenitiesPackage)
+            </dd>
+
+
+
+            @if (Model.Tv == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tv)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tv)
+                </dd>
+            }
+
+            @if (Model.AirCondition == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.AirCondition)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AirCondition)
+                </dd>
+            }
+
+            @if (Model.Sauna == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Sauna)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Sauna)
+                </dd>
+            }
+
+            @if (Model.AlarmClock == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.AlarmClock)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AlarmClock)
+                </dd>
+            }
+            @if (Model.BathAmenities == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.BathAmenities)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BathAmenities)
+                </dd>
+            }
+
+            @if (Model.CentralHeating == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.CentralHeating)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CentralHeating)
+                </dd>
+            }
+
+            @if (Model.CoffeeFacilities == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.CoffeeFacilities)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CoffeeFacilities)
+                </dd>
+            }
+
+            @if (Model.VoiceMail == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.VoiceMail)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.VoiceMail)
+                </dd>
+            }
+
+            @if (Model.Hairdryer == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Hairdryer)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Hairdryer)
+                </dd>
+            }
+
+            @if (Model.MiniBar == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.MiniBar)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MiniBar)
+                </dd>
+            }
+
+            @if (Model.MovieChannels == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.MovieChannels)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MovieChannels)
+                </dd>
+            }
+
+
+            @if (Model.Slippers == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Slippers)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Slippers)
+                </dd>
+            }
+
+            @if (Model.WakeUpCall == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.WakeUpCall)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.WakeUpCall)
+                </dd>
+            }
+
+            @if (Model.FreeWiFi == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.FreeWiFi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FreeWiFi)
+                </dd>
+            }
+
+            @if (Model.Closet == true)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Closet)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Closet)
+                </dd>
+            }
+
+
+
+        </dl>
+
+        @if (User.IsInRole("Administrator"))
+        {
+            <div class="text-center">
+                <div class="col-md-7 mx-auto">
+
+                    @Html.ActionLink("Edit", "Edit", "Amenities", new { id = Model.Id }, new { @class = "btn btn-block btn-outline-dark tx-tfm", style = "margin: 5px" })
+                </div>
+            </div>
+        }
+
+        <div class="text-center">
+            <div class="col-md-7 mx-auto">
+                @if (User.IsInRole("Administrator"))
+                {
+                    @Html.ActionLink("Back", "Index", "Amenities", null, new { @class = "btn btn-block btn-outline-dark tx-tfm", style = "margin: 5px" })
+                }
+                 @if (!User.IsInRole("Administrator"))
+                {
+                    @Html.ActionLink("Back", "Index", "Rooms", new { id = Model.Id }, new { @class = "btn btn-block btn-outline-dark tx-tfm", style = "margin: 5px" })
+                }
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

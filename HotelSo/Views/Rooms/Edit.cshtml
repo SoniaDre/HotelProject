@@ -1,0 +1,96 @@
+﻿@using HotelSo.Models.Enum
+@model HotelSo.DTO.RoomDTO
+@{
+    ViewBag.Title = "Edit Room";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<form asp-action="Edit" asp-controller="Rooms" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input asp-for="Room.Id" type="hidden" />
+
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="myform form ">
+                <div class="form-group">
+                    <label asp-for="Room.Price" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Room.Price" class="form-control" min="0" />
+                        <span asp-validation-for="Room.Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Room.Description" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Room.Description" class="form-control" />
+                        <span asp-validation-for="Room.Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Room.Bed" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <select asp-for="Room.Bed" asp-items="Html.GetEnumSelectList<Bed>()" class="form-control"></select>
+                        <span asp-validation-for="Room.Bed" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Room.Size" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Room.Size" class="form-control" min="0" />
+                        <span asp-validation-for="Room.Size" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Room.View" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <select asp-for="Room.View" asp-items="Html.GetEnumSelectList<View>()" class="form-control"></select>
+                        <span asp-validation-for="Room.View" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Room.RoomType" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <select asp-for="Room.RoomType" asp-items="Html.GetEnumSelectList<RoomType>()" class="form-control"></select>
+                        <span asp-validation-for="Room.RoomType" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Room.MaxPersons" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <select asp-for="Room.MaxPersons" asp-items="Html.GetEnumSelectList<MaxPersons>()" class="form-control"></select>
+                        <span asp-validation-for="Room.MaxPersons" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Room.Floor" class="control-label col-md-2"></label>
+                    <div class="col-md-10">
+                        <select asp-for="Room.Floor" asp-items="Html.GetEnumSelectList<Floor>()" class="form-control"></select>
+                        <span asp-validation-for="Room.Floor" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Room.Amenities" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <select asp-for="Room.AmenitiesId" asp-items="@(new SelectList(Model.Amenities, "Id", "AmenitiesPackage"))" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="file-field">
+                    <div class="btn btn-primary btn-sm float-left">
+                        <span>Choose file</span>
+                        <input type="file" asp-for="postedFile" />
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="col-md-6 mx-auto">
+                        <button type="submit" class="btn btn-block btn-outline-dark tx-tfm" style="margin: 5px">Save</button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="col-md-6 mx-auto">
+                        <a asp-action="Rooms" asp-controller="Admin" class="btn btn-block btn-outline-dark tx-tfm" style="margin: 5px">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/jquery.validate.min.js"></script>

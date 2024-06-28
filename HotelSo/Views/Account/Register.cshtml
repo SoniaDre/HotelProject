@@ -1,0 +1,106 @@
+﻿@model HotelSo.DTO.RegisterDTO
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"] - Deluxe Hotel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/Content/css/custom-register.css">
+    <link rel="stylesheet" href="/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Content/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Content/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-light py-3">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Deluxe Hotel</a>
+            </div>
+        </nav>
+    </header>
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-md-7 col-lg-6">
+                <h1>Create an Account</h1>
+                <p class="font-italic text-muted mb-4">Achieving Superiority in Hospitality.</p>
+                <form asp-controller="Account" asp-action="Register" method="post" class="form-horizontal" role="form">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input asp-for="Firstname" class="form-control bg-white border-md" placeholder="First Name">
+                    </div>
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input asp-for="Lastname" class="form-control bg-white border-md" placeholder="Last Name">
+                    </div>
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-envelope text-muted"></i>
+                            </span>
+                        </div>
+                        <input asp-for="Email" class="form-control bg-white border-md" placeholder="Email Address">
+                    </div>
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-phone-square text-muted"></i>
+                            </span>
+                        </div>
+                        <input asp-for="Telephone" class="form-control bg-white border-md pl-3" placeholder="Phone Number">
+                    </div>
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-lock text-muted"></i>
+                            </span>
+                        </div>
+                        <input asp-for="Password" class="form-control bg-white border-md" placeholder="Password">
+                    </div>
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-lock text-muted"></i>
+                            </span>
+                        </div>
+                        <input asp-for="ConfirmPassword" class="form-control bg-white border-md" placeholder="Confirm Password">
+                    </div>
+                    <div class="form-group col-lg-12 mx-auto mb-0">
+                        <button type="submit" class="btn btn-primary btn-block py-2 font-weight-bold">Create your account</button>
+                    </div>
+                    <div class="form-group col-lg-12 mx-auto mb-0">
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-block py-2 font-weight-bold" style="margin: 5px">Back</a>
+                    </div>
+                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                        <div class="border-bottom w-100 ml-5"></div>
+                        <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+                        <div class="border-bottom w-100 mr-5"></div>
+                    </div>
+                    <div class="text-center w-100">
+                        <p class="text-muted font-weight-bold">Already Registered? <a asp-controller="Account" asp-action="Login">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/js/custom-register.js"></script>
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/js/jquery.validate.js"></script>
+</body>
+</html>
+
+<script src="/Content/js/jquery.validate.js"></script>

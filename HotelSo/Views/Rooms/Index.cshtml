@@ -1,0 +1,60 @@
+﻿@model HotelSo.DTO.SearchDTO
+
+@{
+    ViewData["Title"] = "Rooms";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row">
+                    @foreach (var item in Model.Rooms) // Assuming the correct property name is Rooms
+                    {
+                        <div class="col-sm col-md-6 col-lg-4 ftco-animate">
+                            <div class="room">
+                                <a asp-controller="Rooms" asp-action="SingleRoom" asp-route-id="@item.Id" class="img d-flex justify-content-center align-items-center" style="background-image:url(@item.ProfilePicture);">
+                                    <div class="icon d-flex justify-content-center align-items-center">
+                                        <span class="icon-search2"></span>
+                                    </div>
+                                </a>
+                                <div class="text p-3 text-center">
+                                    <h3 class="mb-3">
+                                        <a asp-controller="Rooms" asp-action="SingleRoom" asp-route-id="@item.Id">@item.EnumStringRoomType</a>
+                                    </h3>
+                                    <p><span class="price mr-2">@item.Price</span> <span class="per">per night</span></p>
+                                    <ul class="list">
+                                        <li><span>Size:</span> @item.Size m2</li>
+                                        <li><span>View:</span> @item.View</li>
+                                        <li><span>Bed:</span> @item.EnumStringBed</li>
+                                        <li><span>Max Persons:</span> @item.EnumStringMaxPesrons</li>
+                                        @if (User.Identity.Name == "admin@hotelSo.com")
+                                        {
+                                            <li>
+                                                <a asp-controller="Rooms" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                                <a asp-controller="Rooms" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                                <a asp-controller="Rooms" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                                                <a asp-controller="Rooms" asp-action="Create">Create</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                    <hr>
+                                    <p class="pt-1">
+                                        <a asp-controller="Reservations" asp-action="Create" asp-route-id="@item.Id" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-3 sidebar">
+                <div class="sidebar-wrap bg-light ftco-animate">
+                    <h3 class="heading mb-4">Advanced Search</h3>
+                    <partial name="_AdvancedSearchPartial" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

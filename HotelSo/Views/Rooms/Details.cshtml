@@ -1,0 +1,105 @@
+﻿@model HotelSo.Models.Room
+
+@{
+    ViewData["Title"] = "Room Details";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<div class="text-center">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Amenities.AmenitiesPackage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.View)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxPersons)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Floor)
+            </th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Amenities.AmenitiesPackage)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.EnumStringBed)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.View)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.EnumStringMaxPesrons)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.EnumStringRoomType)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Floor)
+            </td>
+        </tr>
+    </table>
+    <h3>@Html.DisplayNameFor(model => model.Reservations)</h3>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="myform form ">
+                <table class="table table-hover">
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Arrival Date</th>
+                        <th>Departure Date</th>
+                        <th>Total Cost</th>
+                    </tr>
+                    @foreach (var item in Model.Reservations)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.ApplicationUser.FullName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ArrivalDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DepartureDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TotalCost)</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center ">
+        <div class="col-md-6 mx-auto">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-block btn-outline-dark tx-tfm" style="margin: 5px">Edit</a>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div class="col-md-6 mx-auto">
+            <a asp-action="Rooms" asp-controller="Admin" class="btn btn-block btn-outline-dark tx-tfm" style="margin: 5px">Back</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿
+@using HotelSo.Models.Enum
+@model HotelSo.DTO.SearchDTO
+
+@{
+    Layout = null;
+}
+
+<form asp-action="AdvancedGetFreeRooms" asp-controller="Rooms" method="post">
+    <div class="fields">
+        <div class="form-group">
+            <input asp-for="ArrivalDate" type="date" class="form-control" id="Start_Date" />
+            <span asp-validation-for="ArrivalDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="DepartureDate" type="date" class="form-control" id="End_Date" />
+            <span asp-validation-for="DepartureDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <select asp-for="Room.RoomType" asp-items="Html.GetEnumSelectList<RoomType>()" class="form-control">
+                <option value="">Room Type</option>
+            </select>
+            <span asp-validation-for="Room.RoomType" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <select asp-for="Room.MaxPersons" asp-items="Html.GetEnumSelectList<MaxPersons>()" class="form-control">
+                <option value="">Max Persons</option>
+            </select>
+            <span asp-validation-for="Room.MaxPersons" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" id="Button" class="btn btn-primary py-3 px-5">Search</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const Start_Date = document.getElementById('Start_Date');
+        const End_Date = document.getElementById('End_Date');
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function (event) {
+            const startDate = new Date(Start_Date.value);
+            const endDate = new Date(End_Date.value);
+
+            if (startDate >= endDate) {
+                alert("End Date must be after Start Date");
+                event.preventDefault(); // Prevent form submission
+                End_Date.focus();
+            }
+        });
+    });
+</script>
+<script src="~/Content/js/jquery.validate.js"></script>
+@* @section Scripts {
+    <script src="~/Content/js/main.js"></script>
+
+
+} *@

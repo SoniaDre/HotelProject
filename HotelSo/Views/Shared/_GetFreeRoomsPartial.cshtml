@@ -1,0 +1,72 @@
+﻿@using HotelSo.Models.Enum
+@model HotelSo.DTO.SearchDTO
+
+<form asp-action="GetFreeRooms" asp-controller="Rooms" method="post" class="booking-form">
+    <section class="ftco-booking">
+        <div class="container">
+            <div class="row" style="color:wheat">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-md-3 d-flex">
+                            <div class="form-group p-4 align-self-stretch d-flex align-items-end">
+                                <div class="wrap">
+                                    <label asp-for="ArrivalDate" class="control-label col-md-2"></label>
+                                    <input asp-for="ArrivalDate" class="form-control" type="date" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 d-flex">
+                            <div class="form-group p-4 align-self-stretch d-flex align-items-end">
+                                <div class="wrap">
+                                    <label asp-for="DepartureDate" class="control-label col-md-2"></label>
+                                    <input asp-for="DepartureDate" class="form-control" type="date"  />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 d-flex">
+                            <div class="form-group p-4 align-self-stretch d-flex align-items-end">
+                                <div class="wrap">
+                                    <label asp-for="Room.RoomType" class="control-label col-md-2"></label>
+                                    <select asp-for="Room.RoomType" asp-items="Html.GetEnumSelectList<RoomType>()" class="form-control">
+                                        <option value="">Select Room Type</option>
+                                    </select>
+                                    <span asp-validation-for="Room.RoomType" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md d-flex">
+                            <div class="form-group d-flex align-self-stretch">
+                                <button type="submit" class="btn btn-primary py-3 px-3 align-self-stretch">Check Availability</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const ArrivalDate = document.getElementById('ArrivalDate');
+        const DepartureDate = document.getElementById('DepartureDate');
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function (event) {
+            const startDate = new Date(ArrivalDate.value);
+            const endDate = new Date(DepartureDate.value);
+
+            if (startDate >= endDate) {
+                alert("Departure Date must be after Arrival Date");
+                event.preventDefault(); // Prevent form submission
+                DepartureDate.focus();
+            }
+        });
+    });
+</script>
+
+
+@section Scripts {
+    @await RenderSectionAsync("Scripts", required: false)
+}
